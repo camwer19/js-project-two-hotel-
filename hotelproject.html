@@ -1,0 +1,55 @@
+<html>
+  <head>
+    
+    <style>
+      .room1 {
+        width: 300px;
+        height: 300px;
+        background-color: #b96be0;
+        padding: 10px;
+        margin: 20px;
+      }
+      
+    </style>
+    
+  </head>
+  
+  <body>
+    
+    <div class="room1">
+      <h2>Room One</h2>
+      <input type="text" id="guestName">
+      <button onclick="guestList()">Book</button>
+        <ol>
+        
+        </ol>
+      <button onclick="removeGuest()">Clear Guest</button>
+    </div>
+    
+    <script>
+      
+      function guestList() {
+        var li = document.createElement('li');
+        var x = document.getElementById('guestName').value;
+        document.getElementById('guestName').value = "";
+        var newText = document.createTextNode(x);
+        li.appendChild(newText);
+        var olTag = document.getElementsByTagName('ol')[0];
+        
+        
+        if ( <= 4) {
+          olTag.appendChild(li);
+        }
+        else {
+          document.getElementById("guestName").disabled = true;
+        }
+      }
+      
+      function removeGuest() {
+        
+      }
+      
+    </script>
+    
+  </body>
+</html>
