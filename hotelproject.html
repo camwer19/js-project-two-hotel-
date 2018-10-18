@@ -17,37 +17,38 @@
   <body>
     
     <div class="room1">
-      <h2>Room One</h2>
+      <h2>First Layer of nOT Hell</h2>
       <input type="text" id="guestName">
-      <button onclick="guestList()">Book</button>
-        <ol>
-        
-        </ol>
-      <button onclick="removeGuest()">Clear Guest</button>
+      <button onclick="guestList(), getElementsByTagName('li').innerHTML = Date()">Book</button>
+      <ul id="list"></ul>
     </div>
     
     <script>
       
+      var time = Date();
+      
       function guestList() {
-        var li = document.createElement('li');
-        var x = document.getElementById('guestName').value;
+        //Create parent element and save it as a variable
+        var guests = document.getElementsByTagName('ul')[0];
+        //Create new item and save as variable
+        var newItem = document.createElement('li');
+        //Save value of "guestName" input as a variable, then clear input box
+        var userName = document.getElementById('guestName').value;
         document.getElementById('guestName').value = "";
-        var newText = document.createTextNode(x);
-        li.appendChild(newText);
-        var olTag = document.getElementsByTagName('ol')[0];
-        
-        
-        if ( <= 4) {
-          olTag.appendChild(li);
-        }
-        else {
-          document.getElementById("guestName").disabled = true;
-        }
+        //Use value as new text to place in the li element, and append text to item
+        var newText = document.createTextNode(userName);
+        newItem.appendChild(newText);
+        //Add item to global list variable.
+        guests.appendChild(newItem);
       }
       
+      document.getElementById("list").onclick = function() {removeGuest()};
+      
       function removeGuest() {
-        
+        //replace element with nothing
+        document.getElementById("list").innerHTML = "";
       }
+      
       
     </script>
     
