@@ -1,0 +1,67 @@
+<html>
+  <head>
+    
+    <style>
+      .room1 {
+        width: 300px;
+        height: 300px;
+        background-color: #b96be0;
+        padding: 10px;
+        margin: 20px;
+      }
+      
+    </style>
+    
+  </head>
+  
+  <body>
+    
+    <div class="room1">
+      <h2>First Layer of nOT Hell</h2>
+      <input type="text" id="guestName" placeholder="Enter guest name" onkeydown="Javascript: if (event.keyCode==13) guestList();">
+      <ul id="list"></ul>
+    </div>
+    
+    <script>
+      
+      var time = Date();
+      
+      function guestList() {
+        //Create parent element and save it as a variable
+        var guests = document.getElementsByTagName('ul')[0];
+        //Create new item and save as variable
+        var newItem = document.createElement('li');
+        //Save value of "guestName" input as a variable, then clear input box
+        var userName = document.getElementById('guestName').value;
+        document.getElementById('guestName').value = "";
+        //Use value as new text to place in the li element, and append text to item
+        var newText = document.createTextNode(userName);
+        newItem.appendChild(newText);
+        //Have a variable that counts the number of items in the list
+        var num = document.getElementById("list").getElementsByTagName("li").length;
+        //Create if else to stop overflow of guests per room
+        if (num <= 3) {
+          //Append item to list
+          guests.appendChild(newItem);
+        }
+        else {
+          //disables text field
+          document.getElementById("guestName").disabled = true;
+          //changes placeholder to inform user of too many guests
+          var ph = document.getElementById("guestName").placeholder = "Too many";
+        }
+      }
+      
+      
+      document.getElementById("list").onclick = function() {removeGuest()};
+      
+      function removeGuest() {
+        //replace element with nothing
+        document.getElementById("list").innerHTML = "";
+      }
+      
+      
+    </script>
+    
+  </body>
+</html>
