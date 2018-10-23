@@ -1,0 +1,95 @@
+<html>
+  <head>
+    
+    <style>
+      .room1 {
+        width: 300px;
+        height: 300px;
+        background-color: rgba(198, 105, 234, 0.7);
+        padding: 10px;
+        margin: 20px;
+        float: left;
+      }
+      
+    </style>
+    
+  </head>
+  
+  <body>
+    
+    <div class="room1">
+      <h2>First Layer of nOT Hell</h2>
+      <input type="text" id="guestName" placeholder="Enter guest name" onkeydown="Javascript: if (event.keyCode==13) guestList();">
+      <button onclick="guestList()">Book</button>
+      <ul id="list"></ul>
+      <button onclick="removeGuests()">Clear Room</button>
+      <input type="button" id="clean" value="Clean Room"/>
+      
+    </div>
+    
+    <script>
+      
+      var time = Date();
+      
+      function guestList() {
+        //Create parent element and save it as a variable
+        var guests = document.getElementsByTagName('ul')[0];
+        //Create new item and save as variable
+        var newItem = document.createElement('li');
+        //Save value of "guestName" input as a variable, then clear input box
+        var userName = document.getElementById('guestName').value;
+        document.getElementById('guestName').value = "";
+        //Use value as new text to place in the li element, and append text to item
+        var newText = document.createTextNode(userName);
+        newItem.appendChild(newText);
+        //Have a variable that counts the number of items in the list
+        var num = document.getElementById("list").getElementsByTagName("li").length;
+        //Create if else to stop overflow of guests per room
+        if (num <= 3) {
+          //Append item to list
+          guests.appendChild(newItem);
+        }
+        else {
+          //disables text field
+          document.getElementById("guestName").disabled = true;
+          //changes placeholder to inform user of too many guests
+          document.getElementById("guestName").placeholder = "Room Full";
+        }
+      }
+      
+      
+      //document.getElementById("list").onclick = function() {removeGuests()};
+      
+      function removeGuests() {
+        //replace element with nothing
+        document.getElementById("list").innerHTML = "";
+        document.getElementById("guestName").disabled = false;
+        document.getElementById("guestName").placeholder = "Enter Guest Name";
+      }
+      
+      var clean = document.getElementById("clean");
+      
+      clean.addEventListener("click", cleaning);
+      
+      function stopCleaning() {
+        document.getElementById("guestName").placeholder = "Enter Guest Name";
+        document.getElementById("guestName").disabled = false;
+        clean.removeEventListener("click", stopCleaning);
+        clean.addEventListener("click", cleaning);
+        clean.value = "Clean Room";
+      }
+      
+      function cleaning() {
+        //clean.addEventListener("click", removeGuests);
+        document.getElementById("guestName").placeholder = "CLEANING: IN PROCESS";
+        document.getElementById("guestName").disabled = true;
+        clean.removeEventListener("click", cleaning);
+        clean.addEventListener("click", stopCleaning);
+        clean.value = "Stop Cleaning";
+      }
+      
+      
+    </script>
+    
+  </body>
+</html>
