@@ -3,19 +3,49 @@
   <head>
     
     <style>
+      body {
+        background-color: #ffeded;
+        margin: 0;
+      }
       
       .header {
-        width: 110vw;
+        width: 100%;
         height: 15vh;
-        background-color: #E04B5A;
-        margin-left: -8vw;
+        background-color: #ce3184;
         margin-top: -8px;
       }
       
+      .container {
+        text-align: center;
+        z-index: 1;
+      }
+      
       .room {
-        width: 45%;
+        width: 55%;
         height: 60%;
-        background-color: rgba(255, 255, 255, 0.7);
+        background-color: rgba(255, 255, 255, 0.8);
+        display: inline-block;
+      }
+      
+      .half1 {
+        float: left;
+        width: 50%;
+        max-height: 60%;
+        background-color: pink;
+      }
+      
+      .half2 {
+        float: right;
+        width: 50%;
+        max-height: 60%;
+        background-color: green;
+      }
+      
+      .bg1 {
+        width: 100%;
+        height: 87vh;
+        z-index: -1;
+        position: absolute;
       }
       
     </style>
@@ -27,14 +57,27 @@
     
     <div class="header"></div>
     
-    <div class="room"></div>
+    <img class="bg1" src="https://cdn.thecoolist.com/wp-content/uploads/2017/05/Aria-las-vegas-hotel.jpg">
+    
+    <div class="container">
+      <div class="room">
+        
+        <div class="half1">
+          
+        </div>
+        
+        <div class="half2">
+          
+        </div>
+        
+      </div>
+    </div>
+    
+    
     
     <script>
       
-      //#E04B5A , #E49756 , #5B305A , #9A4B67
-      //https://moneyinc.com/wp-content/uploads/2016/04/Las-Vegas-750x422.jpg
-      // https://www.cheapovegas.com/sites/www.cheapovegas.com/files/bellagio-cheapo-ext_C.jpg?1330019649
-      // https://cdn.thecoolist.com/wp-content/uploads/2017/05/Aria-las-vegas-hotel.jpg
+      
       
     </script>
     
